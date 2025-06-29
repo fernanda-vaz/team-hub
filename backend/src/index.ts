@@ -2,6 +2,7 @@ import { config } from 'dotenv'
 import express from 'express'
 import cors from 'cors'
 import { Mongo } from './database/mongo.js'
+import employeesRouter from './routes/employees.js'
 
 config()
 
@@ -24,6 +25,8 @@ async function main() {
   app.get('/', (req, res) => {
     res.send({ success: true, statusCode: 200, body: 'Bem vindo ao Team Hub!' })
   })
+
+  app.use('/employees', employeesRouter)
 
   app.listen(port, () => {
     console.log(`Servidor rodando em: http://${hostname}:${port}`)
