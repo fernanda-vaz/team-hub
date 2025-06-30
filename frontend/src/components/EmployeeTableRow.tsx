@@ -4,7 +4,7 @@ import type { AppDispatch } from '../app/store'
 import { Button, Dropdown, message, type MenuProps } from 'antd'
 import { useState } from 'react'
 import { deleteEmployee } from '../features/employees/employeesSlice'
-import { SuccessModal } from './ui/SuccessModal'
+import { ConfirmationModal } from './ui/ConfirmationModal'
 import { ThreeDotsIcon } from './ui/icons'
 
 interface EmployeeTableRowProps {
@@ -74,22 +74,23 @@ export const EmployeeTableRow = ({
     <>
       {contextHolder}
 
-      <SuccessModal
+      <ConfirmationModal
         isOpen={isSuccessModalOpen}
         onClose={() => setIsSuccessModalOpen(false)}
-        content='Usuário excluído com sucesso!'
+        content={`Tem certeza que deseja excluir o funcionário ${employee.nome}? Esta ação não pode ser desfeita.`}
         onOk={handleDelete}
+        title='Confirmar Exclusão'
       />
 
       <tr
         className={`px-2 text-xs  font-semibold ${
-          employee.ativo ? 'bg-white text-slate-700' : 'bg-gray-100 text-slate-300'
+          employee.ativo
+            ? 'bg-white text-slate-700'
+            : 'bg-gray-100 text-slate-300'
         }`}
       >
         <td className='px-6 py-4 whitespace-nowrap'>
-          <div className='text-sm font-medium '>
-            {employee.nome}
-          </div>
+          <div className='text-sm font-medium '>{employee.nome}</div>
         </td>
 
         <td className='px-6 py-4 whitespace-nowrap'>

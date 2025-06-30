@@ -8,9 +8,9 @@ import {
 } from '../features/employees/employeesSlice'
 import { EmployeeTableRow } from '../components/EmployeeTableRow'
 import { AddEmployeeForm } from '../components/AddEmployeeForm'
+import { EditEmployeeForm } from '../components/EditEmployeeForm'
 
 export default function EmployeesPage() {
-  const dispatch = useDispatch()
   const dispatchEmployees = useDispatch<AppDispatch>()
   const { data, filteredData, status } = useSelector(
     (state: RootState) => state.employees
@@ -37,7 +37,14 @@ export default function EmployeesPage() {
             }}
           />
         ) : editingEmployee ? (
-          <p>Carregando...</p>
+          <EditEmployeeForm
+            employee={editingEmployee}
+            onCancel={() => setEditingEmployee(null)}
+            onSuccess={() => {
+              setEditingEmployee(null)
+              dispatchEmployees(fetchEmployees())
+            }}
+          />
         ) : (
           <>
             <div className='bg-indigo-600 shadow-sm px-6 py-4 rounded-t-2xl'>

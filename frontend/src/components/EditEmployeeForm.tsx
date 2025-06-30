@@ -3,12 +3,14 @@ import * as yup from 'yup'
 import type { AppDispatch } from '../app/store'
 import { useState } from 'react'
 import { useFormik } from 'formik'
-import { addEmployee } from '../features/employees/employeesSlice'
+import { updateEmployee } from '../features/employees/employeesSlice'
 import { ArrowLeftIcon } from './ui/icons'
 import { ToggleSwitch } from './ui/ToggleSwitch'
 import { RadioGroup } from './ui/RadioGroup'
+import type { Employee } from '../models/employee.model'
 
-interface AddEmployeesFormProps {
+interface EditEmployeesFormProps {
+  employee: Employee
   onCancel: () => void
   onSuccess: () => void
 }
@@ -29,26 +31,28 @@ const validationSchema = yup.object({
   ativo: yup.boolean().required(),
 })
 
-export function AddEmployeeForm({
+export function EditEmployeeForm({
+  employee,
   onCancel,
   onSuccess,
-}: AddEmployeesFormProps) {
+}: EditEmployeesFormProps) {
   const dispatch = useDispatch<AppDispatch>()
   const [isSubmiting, setIsSubmiting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   const formik = useFormik({
     initialValues: {
-      nome: '',
-      dataNascimento: '',
-      cpf: '',
-      rg: '',
-      email: '',
-      dataContratacao: '',
-      sexo: '',
-      cargo: '',
-      departamento: '',
-      ativo: true,
+      id: employee._id,
+      nome: employee.nome,
+      dataNascimento: employee.dataNascimento,
+      cpf: employee.cpf,
+      rg: employee.rg,
+      email: employee.email,
+      dataContratacao: employee.dataContratacao,
+      sexo: employee.sexo,
+      cargo: employee.cargo,
+      departamento: employee.departamento,
+      ativo: employee.ativo,
     },
     validationSchema,
 
@@ -57,16 +61,22 @@ export function AddEmployeeForm({
       setIsSubmiting(true)
 
       try {
-        const employeeToAdd = {
-          ...values,
-          sexo: values.sexo as 'feminino' | 'masculino' | 'outro',
+        const { id, ...rest } = values
+        const employeeToUpdate = {
+          id,
+          data: {
+            ...rest,
+            sexo: values.sexo as 'feminino' | 'masculino' | 'outro',
+          },
         }
 
-        await dispatch(addEmployee(employeeToAdd)).unwrap()
+        await dispatch(updateEmployee(employeeToUpdate)).unwrap()
         onSuccess()
       } catch (err) {
-        setError('Erro ao adicionar funcionário. Por favor, tente novamente.')
-        console.error('Erro ao adicionar funcionário.', err)
+        setError(
+          'Erro ao editar dados do funcionário. Por favor, tente novamente.'
+        )
+        console.error('Erro ao editar dados do funcionário.', err)
       } finally {
         setIsSubmiting(false)
       }
@@ -84,7 +94,7 @@ export function AddEmployeeForm({
           <ArrowLeftIcon />
         </button>
 
-        <h2 className='text-3xl font-bold text-white'>Adicionar Funcionário</h2>
+        <h2 className='text-3xl font-bold text-white'>Editar Funcionário</h2>
       </div>
 
       <form
