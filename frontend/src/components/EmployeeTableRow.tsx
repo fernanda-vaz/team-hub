@@ -98,7 +98,7 @@ export const EmployeeTableRow = ({
       />
 
       <tr
-        className={`px-2 text-xs  font-semibold ${
+        className={`px-2 text-xs  font-semibold hover:bg-gray-50 ${
           employee.ativo
             ? 'bg-white text-slate-700'
             : 'bg-gray-100 text-slate-300'

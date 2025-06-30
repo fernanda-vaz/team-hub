@@ -44,11 +44,11 @@ export function EditEmployeeForm({
     initialValues: {
       id: employee._id,
       nome: employee.nome,
-      dataNascimento: employee.dataNascimento,
+      dataNascimento: employee.dataNascimento.split('T')[0],
       cpf: employee.cpf,
       rg: employee.rg,
       email: employee.email,
-      dataContratacao: employee.dataContratacao,
+      dataContratacao: employee.dataContratacao.split('T')[0],
       sexo: employee.sexo,
       cargo: employee.cargo,
       departamento: employee.departamento,
