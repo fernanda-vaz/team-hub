@@ -40,12 +40,6 @@ const menuItems = [
   },
   {
     key: 'item5',
-    icon: <CalendarIcon />,
-    path: '/vacations',
-    label: 'Férias/Ausências',
-  },
-  {
-    key: 'item6',
     icon: <SettingsIcon />,
     path: '/settings',
     label: 'Configurações',

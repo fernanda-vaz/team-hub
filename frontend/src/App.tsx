@@ -5,7 +5,6 @@ import DepartmentsPage from './pages/Departments'
 import EmployeesPage from './pages/Employees'
 import ReportsPage from './pages/Reports'
 import SettingsPage from './pages/Settings'
-import VacationsPage from './pages/Vacations'
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
             <Route path='/employees' element={<EmployeesPage />} />
             <Route path='/reports' element={<ReportsPage />} />
             <Route path='/settings' element={<SettingsPage />} />
-            <Route path='/vacations' element={<VacationsPage />} />
           </Routes>
         </main>
       </div>
