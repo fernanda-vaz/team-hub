@@ -10,7 +10,7 @@ import VacationsPage from './pages/Vacations'
 function App() {
   return (
     <BrowserRouter>
-      <div className='flex bg-gray-300'>
+      <div className='flex bg-gray-200'>
         <Sidebar />
         <main className='flex-1 pb-16 md:pb-0'>
           <Routes>
