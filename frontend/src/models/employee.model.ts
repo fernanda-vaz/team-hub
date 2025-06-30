@@ -6,7 +6,7 @@ export interface Employee {
   rg: string
   email: string
   dataContratacao: string
-  sexo: 'feminino' | 'masculino'
+  sexo: 'feminino' | 'masculino' | 'outro'
   cargo: string
   departamento: string
   ativo: boolean

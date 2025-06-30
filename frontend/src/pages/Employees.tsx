@@ -7,6 +7,7 @@ import {
   setActiveFilter,
 } from '../features/employees/employeesSlice'
 import { EmployeeTableRow } from '../components/EmployeeTableRow'
+import { AddEmployeeForm } from '../components/AddEmployeeForm'
 
 export default function EmployeesPage() {
   const dispatch = useDispatch()
@@ -28,7 +29,13 @@ export default function EmployeesPage() {
     <div className='flex-1 bg-gray-200 min-h-screen w-full overflow-x-hidden'>
       <div className='max-w-7xl mx-auto rounded-2xl bg-white shadow-sm my-8'>
         {showAddForm ? (
-          <p>Carregando...</p>
+          <AddEmployeeForm
+            onCancel={() => setShowAddForm(false)}
+            onSuccess={() => {
+              setShowAddForm(false)
+              dispatchEmployees(fetchEmployees())
+            }}
+          />
         ) : editingEmployee ? (
           <p>Carregando...</p>
         ) : (
