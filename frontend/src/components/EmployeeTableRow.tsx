@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { deleteEmployee } from '../features/employees/employeesSlice'
 import { ConfirmationModal } from './ui/ConfirmationModal'
 import { ThreeDotsIcon } from './ui/icons'
+import { EditEmployeeForm } from './EditEmployeeForm'
 
 interface EmployeeTableRowProps {
   employee: Employee
@@ -20,6 +21,7 @@ export const EmployeeTableRow = ({
   const [messageApi, contextHolder] = message.useMessage()
   const [dropdownVisible, setDropdownVisible] = useState(false)
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false)
+  const [editing, setEditing] = useState(false)
 
   const handleDelete = async () => {
     setDropdownVisible(false)
@@ -69,6 +71,19 @@ export const EmployeeTableRow = ({
       className: 'custom-menu-item ant-dropdown-menu-item',
     },
   ]
+
+  if (editing) {
+    return (
+      <EditEmployeeForm
+        employee={employee}
+        onCancel={() => setEditing(false)}
+        onSuccess={() => {
+          setEditing(false)
+          messageApi.success('Funcionário atualizado com sucesso!')
+        }}
+      />
+    )
+  }
 
   return (
     <>
