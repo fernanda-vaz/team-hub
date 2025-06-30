@@ -4,11 +4,14 @@ import { Mongo } from '../database/mongo.js'
 export interface Employee {
   _id: ObjectId
   nome: string
+  dataNascimento: string
   cpf: string
   rg: string
   email: string
+  dataContratacao: string
   sexo: 'feminino' | 'masculino'
   cargo: string
+  departamento: string
   ativo: boolean
 }
 
