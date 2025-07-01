@@ -84,7 +84,7 @@ export function EditEmployeeForm({
   })
 
   return (
-    <div className='flex flex-col flex-1 rounded-t-2xl bg-white shadow-sm relative overflow-hidden'>
+    <div className='flex flex-col flex-1 rounded-2xl bg-white shadow-sm relative overflow-hidden'>
       <div className='bg-indigo-600 text-white px-4 md:px-6 py-3 rounded-t-2xl flex items-center gap-4'>
         <button
           onClick={onCancel}
@@ -94,7 +94,7 @@ export function EditEmployeeForm({
           <ArrowLeftIcon />
         </button>
 
-        <h2 className='text-3xl font-bold text-white'>Editar Funcionário</h2>
+        <h2 className='text-2xl sm:text-3xl font-bold text-white'>Editar Funcionário</h2>
       </div>
 
       <form
@@ -105,7 +105,7 @@ export function EditEmployeeForm({
           <div className='p-3 text-red-700 text-sm md:text-base'>{error}</div>
         )}
 
-        <div className='flex flex-col md:flex-row items-start md:items-center justify-between border border-indigo-600 shadow-sm rounded-xl p-3 gap-3'>
+        <div className='flex flex-col lg:flex-row items-start md:items-center justify-between border border-indigo-600 shadow-sm rounded-xl p-3 gap-3'>
           <span className='text-sm md:text-base font-medium'>
             O trabalhador está ativo ou inativo?
           </span>
@@ -117,7 +117,7 @@ export function EditEmployeeForm({
           />
         </div>
 
-        <div className='flex md:flex-row border border-indigo-700 shadow-sm rounded-xl p-3 gap-4 md:gap-6'>
+        <div className='flex flex-col lg:flex-row border border-indigo-700 shadow-sm rounded-xl p-3 gap-4 md:gap-6'>
           <div className='flex flex-col w-full md:w-1/2 gap-4'>
             <div className='flex flex-col'>
               <label className='mb-1 md:mb-2 text-sm md:text-base'>Nome</label>
@@ -132,7 +132,7 @@ export function EditEmployeeForm({
                   formik.touched.nome && formik.errors.nome
                     ? 'border-red-500'
                     : 'border-indigo-500'
-                } px-3 py-2 rounded-lg text-sm md:text-base`}
+                } px-3 py-2 rounded-lg text-sm md:text-base text-gray-600`}
                 disabled={isSubmiting}
               />
               {formik.touched.nome && formik.errors.nome && (
@@ -157,7 +157,7 @@ export function EditEmployeeForm({
                   formik.touched.dataNascimento && formik.errors.dataNascimento
                     ? 'border-red-500'
                     : 'border-indigo-500'
-                } px-3 py-2 rounded-lg text-sm md:text-base`}
+                } px-3 py-2 rounded-lg text-sm md:text-base text-gray-600`}
                 disabled={isSubmiting}
               />
               {formik.touched.dataNascimento &&
@@ -181,7 +181,7 @@ export function EditEmployeeForm({
                   formik.touched.cpf && formik.errors.cpf
                     ? 'border-red-500'
                     : 'border-indigo-500'
-                } px-3 py-2 rounded-lg text-sm md:text-base`}
+                } px-3 py-2 rounded-lg text-sm md:text-base text-gray-600`}
                 disabled={isSubmiting}
               />
               {formik.touched.cpf && formik.errors.cpf && (
@@ -204,7 +204,7 @@ export function EditEmployeeForm({
                   formik.touched.rg && formik.errors.rg
                     ? 'border-red-500'
                     : 'border-indigo-500'
-                } px-3 py-2 rounded-lg text-sm md:text-base`}
+                } px-3 py-2 rounded-lg text-sm md:text-base text-gray-600`}
                 disabled={isSubmiting}
               />
               {formik.touched.rg && formik.errors.rg && (
@@ -229,7 +229,7 @@ export function EditEmployeeForm({
                   formik.touched.email && formik.errors.email
                     ? 'border-red-500'
                     : 'border-indigo-500'
-                } px-3 py-2 rounded-lg text-sm md:text-base`}
+                } px-3 py-2 rounded-lg text-sm md:text-base text-gray-600`}
                 disabled={isSubmiting}
               />
               {formik.touched.email && formik.errors.email && (
@@ -270,7 +270,7 @@ export function EditEmployeeForm({
                   formik.touched.cargo && formik.errors.cargo
                     ? 'border-red-500'
                     : 'border-indigo-700'
-                } px-3 py-2 rounded-lg text-sm md:text-base`}
+                } px-3 py-2 rounded-lg text-sm md:text-base text-gray-600`}
                 disabled={isSubmiting}
               >
                 <option value='' disabled className='text-gray-200'>
@@ -333,7 +333,7 @@ export function EditEmployeeForm({
                   formik.touched.departamento && formik.errors.departamento
                     ? 'border-red-500'
                     : 'border-indigo-700'
-                } px-3 py-2 rounded-lg text-sm md:text-base`}
+                } px-3 py-2 rounded-lg text-sm md:text-base text-gray-600`}
                 disabled={isSubmiting}
               >
                 <option value='' disabled>
@@ -367,7 +367,7 @@ export function EditEmployeeForm({
                   formik.errors.dataContratacao
                     ? 'border-red-500'
                     : 'border-indigo-500'
-                } px-3 py-2 rounded-lg text-sm md:text-base`}
+                } px-3 py-2 rounded-lg text-sm md:text-base text-gray-600`}
                 disabled={isSubmiting}
               />
               {formik.touched.dataContratacao &&
