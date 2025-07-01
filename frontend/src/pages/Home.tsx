@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()
   const {
     data: employees,
-    loading,
+    status,
     error,
   } = useSelector((state: RootState) => state.employees)
 
@@ -139,7 +139,7 @@ const HomePage: React.FC = () => {
   }, [employees])
 
   // --- RENDERIZAÇÃO CONDICIONAL ---
-  if (loading) {
+  if (status === 'loading') {
     return (
       <div className='flex h-screen w-full items-center justify-center'>
         <p className='text-lg text-gray-600'>Carregando dashboard...</p>
@@ -164,7 +164,7 @@ const HomePage: React.FC = () => {
       <div className='max-w-7xl mx-auto'>
         {/* 1. Cabeçalho da Página */}
         <div className='mb-8'>
-          <h1 className='text-3xl font-bold text-gray-800'>
+          <h1 className='text-2xl sm:text-3xl font-bold text-gray-800'>
             Bem-vindo(a) de volta!
           </h1>
           <p className='text-gray-500 mt-1 capitalize'>{getTodayDate()}</p>

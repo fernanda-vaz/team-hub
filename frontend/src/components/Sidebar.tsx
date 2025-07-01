@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react'
 import { toggleSidebar } from '../features/ui/uiSlice'
 import {
   BriefcaseIcon,
-  CalendarIcon,
   GraphIcon,
   HomeIcon,
   MenuIcon,
-  SettingsIcon,
   UsersIcon,
 } from './ui/icons'
 import { Link, useLocation } from 'react-router-dom'
@@ -37,12 +35,6 @@ const menuItems = [
     icon: <GraphIcon />,
     path: '/reports',
     label: 'Relatórios',
-  },
-  {
-    key: 'item5',
-    icon: <SettingsIcon />,
-    path: '/settings',
-    label: 'Configurações',
   },
 ]
 

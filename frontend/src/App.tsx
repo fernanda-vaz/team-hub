@@ -4,9 +4,24 @@ import HomePage from './pages/Home'
 import DepartmentsPage from './pages/Departments'
 import EmployeesPage from './pages/Employees'
 import ReportsPage from './pages/Reports'
-import SettingsPage from './pages/Settings'
+import { useSelector } from 'react-redux'
+import type { RootState } from './app/store'
+import { useEffect } from 'react'
 
 function App() {
+  const { theme } = useSelector((state: RootState) => state.theme)
+
+  useEffect(() => {
+    const root = window.document.documentElement
+    const isDark =
+      theme === 'dark' ||
+      (theme === 'system' &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+
+    root.classList.remove(isDark ? 'light' : 'dark')
+    root.classList.add(isDark ? 'dark' : 'light')
+  }, [theme])
+
   return (
     <BrowserRouter>
       <div className='flex bg-gray-200'>
@@ -17,7 +32,6 @@ function App() {
             <Route path='/departments' element={<DepartmentsPage />} />
             <Route path='/employees' element={<EmployeesPage />} />
             <Route path='/reports' element={<ReportsPage />} />
-            <Route path='/settings' element={<SettingsPage />} />
           </Routes>
         </main>
       </div>

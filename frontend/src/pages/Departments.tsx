@@ -73,7 +73,7 @@ export default function DepartmentsPage() {
         <div className='max-w-7xl mx-auto space-y-8'>
           <div>
             <div className='bg-indigo-600 shadow-sm px-6 py-4 rounded-t-2xl'>
-              <h2 className='text-3xl font-bold text-white'>
+              <h2 className='text-2xl sm:text-3xl font-bold text-white'>
                 Visão Geral por Departamentos
               </h2>
             </div>
