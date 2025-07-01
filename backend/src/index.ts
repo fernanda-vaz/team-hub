@@ -7,8 +7,8 @@ import employeesRouter from './routes/employees.js'
 config()
 
 async function main() {
-  const hostname = 'localhost'
-  const port = 3000
+  // const hostname = 'localhost'
+  const port = process.env.PORT || 3000
 
   const app = express()
 
@@ -29,7 +29,7 @@ async function main() {
   app.use('/employees', employeesRouter)
 
   app.listen(port, () => {
-    console.log(`Servidor rodando em: http://${hostname}:${port}`)
+    console.log(`Servidor rodando em: ${port}`)
   })
 }
 
