@@ -16,7 +16,6 @@ export const ConfirmationModal = ({
   isOpen,
   onClose,
   onOk,
-  title,
   content,
   okText = 'OK',
   cancelText = 'Cancelar',
